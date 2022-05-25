@@ -15,10 +15,21 @@
 <body>
 
     <div class="container">
+        <div class="x_title">
+          <h1 class="box-title">Crear empleado
+                  <SPAN title="Crear empleado"><!--span - abarcar. Es un contenedor en línea. Sirve para aplicar estilo al texto o agrupar elementos en línea.-->
+                    <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)" style="background-color: #4CAF50;"><!--Al hacer click, muestra el formulario-->
+                      <i class="fa fa-plus-circle"><!--Muestra el texto marcado con un estilo en cursiva o italica.-->
+                      </i> Crear
+                    </button>
+                  </SPAN>
+                </h1>
+           
+          <div class="clearfix"></div>
+        </div>
         <div class="form-row align-items-center" id="formularioregistros">
             <!--div con el formulario de registre para articulos-->
             <!--formulario oculto-->
-            <h1>Crear empleado</h1>
             <div class="alert alert-primary" role="alert">
                 Los campos con asteriscos (*), son obligatorios
               </div>
