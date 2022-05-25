@@ -10,6 +10,35 @@ function init()
 	{
 		guardar(e);//guarda o edita el articulo
 	})
+
+    $("#sexoM").on("click",function(e)//e = variable que contiene el objeto
+	{
+		$("#sexoF").prop('checked', false)
+	})
+
+    $("#sexoF").on("click",function(e)//e = variable que contiene el objeto
+	{
+		$("#sexoM").prop('checked', false)
+	})
+
+    $("#rol1").on("click",function(e)//e = variable que contiene el objeto
+	{
+		$("#rol2").prop('checked', false)
+		$("#rol3").prop('checked', false)
+	})
+
+    $("#rol2").on("click",function(e)//e = variable que contiene el objeto
+	{
+		$("#rol1").prop('checked', false)
+		$("#rol3").prop('checked', false)
+	})
+
+    $("#rol3").on("click",function(e)//e = variable que contiene el objeto
+	{
+		$("#rol2").prop('checked', false)
+		$("#rol1").prop('checked', false)
+	})
+
 }
 
 //Función mostrar formulario
@@ -18,14 +47,17 @@ function mostrarform(flag)
 	limpiar();//limpia el formulario
 	if (flag)
 	{//partes de la pagina que se muestran o se ocultan
+        $.post("../Control/AreasControl.php?op=listar", function (r) {
+            $("#area").html(r);
+            $('#area').selectpicker('refresh');
+        });
 		$("#listadoregistros").hide();
 		$("#formularioregistros").show();
 		$("#btnGuardar").prop("disabled",false);
 		$("#btnagregar").hide();
 	}
 	else
-	{		
-		$("#listadoregistros").show();
+	{	$("#listadoregistros").show();
 		$("#formularioregistros").hide();
 		$("#btnagregar").show();
 	}
@@ -60,7 +92,7 @@ function listar()
 	    "aServerSide": true,//Paginación y filtrado realizados por el servidor
 	    "ajax"://metodo ajax
 				{
-					url: '../Control/EmpleadosControl.php?op=listar',//pagina que realiza la operación
+					url: '../PruebaTecnica/Control/EmpleadoControl.php?op=listar',//pagina que realiza la operación
 					type : "get",//tipo de envio de datos
 					dataType : "json",//tipo de datos
 					error: function(e){//si error muestra mensaje
@@ -81,7 +113,7 @@ function guardar(e)
 	$("#btnGuardar").prop("disabled",true);
 	var formData = new FormData($("#formEstacion")[0]);
 	$.ajax({
-		url: "../Control/EmpleadosControl.php?op=guardar",
+		url: "../Control/EmpleadoControl.php?op=guardar",
 	    type: "POST",
 	    data: formData,
 	    contentType: false,
@@ -99,7 +131,7 @@ function guardar(e)
 
 function mostrar(id)
 {
-	$.post("../Control/EmpleadosControl.php?op=mostrar",{id : id}, function(data, status)
+	$.post("../Control/EmpleadoControl.php?op=mostrar",{id : id}, function(data, status)
 	{
 		data = JSON.parse(data);
 		mostrarform(true);
@@ -120,7 +152,7 @@ function borrar(id)
 	bootbox.confirm("¿Está Seguro de borrar el empleado?", function(result){
 		if(result)
         {
-        	$.post("../Control/EmpleadosControl.php?op=borrar", {id : id}, function(e)
+        	$.post("../Control/EmpleadoControl.php?op=borrar", {id : id}, function(e)
         	{
         		bootbox.alert(e);
 	            tabla.ajax.reload();

@@ -53,5 +53,14 @@ switch ($_GET["op"])
 	 		echo json_encode($results);//muestra el resultado
 
 		break;
+        case "select":
+
+                $rspta = $area->listar();//Carga variable con funcion select de categoría
+                echo '<option value="0">seleccione...</option>';
+                while ($reg = $rspta->fetch_object())//mientras exista respuesta
+                        {
+                                echo '<option value=' . $reg->id . '>' . $reg->nombre . '</option>';
+                        }
+        break;
 	}
 ?>
