@@ -14,23 +14,20 @@
 
 <body>
 
-    <div class="container">
-        <div class="x_title">
-          <h1 class="box-title">Crear empleado
-                  <SPAN title="Crear empleado"><!--span - abarcar. Es un contenedor en línea. Sirve para aplicar estilo al texto o agrupar elementos en línea.-->
-                    <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)" style="background-color: #4CAF50;"><!--Al hacer click, muestra el formulario-->
-                      <i class="fa fa-plus-circle"><!--Muestra el texto marcado con un estilo en cursiva o italica.-->
+    <div class="container" style="margin-left:20%">
+        <div class="col-8">
+          <h1>Crear empleado
+                  <SPAN title="Crear empleado">
+                    <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)" style="background-color: #4CAF50;">
+                      <i class="fa fa-plus-circle">
                       </i> Crear
                     </button>
                   </SPAN>
                 </h1>
-           
-          <div class="clearfix"></div>
         </div>
-        <div class="form-row align-items-center" id="formularioregistros">
-            <!--div con el formulario de registre para articulos-->
+        <div class="align-items-center" id="formularioregistros">
             <!--formulario oculto-->
-            <div class="alert alert-primary" role="alert">
+            <div class="col-8 alert alert-primary" role="alert">
                 Los campos con asteriscos (*), son obligatorios
               </div>
             <form name="formEmpleado" id="formEmpleado" method="POST">
@@ -76,7 +73,7 @@
                             <label>Área *</label>
                         </div>
                         <div class="form-group col-6">
-                            <select id="area" name="area" class="form-control" data-live-search="true" required>
+                            <select id="area" name="area" class="form-control" data-live-search="true">
                             </select>
                         </div>
                     </div>
@@ -134,9 +131,8 @@
                 </div>
             </form>
         </div>
-    </div>
     <!-- centro listado de articulos-->
-    <div class="panel-body table-responsive" id="listadoregistros">
+    <div class="table-responsive col-8" id="listadoregistros">
         <table id="tbllistado" name="tbllistado" class="table table-striped table-bordered table-condensed table-hover">
             <thead>
                 <th>Id</th>
@@ -160,6 +156,7 @@
     <script src="../PruebaTecnica/Recursos/bootstrap/js/bootstrap.min.js"></script>
     <!-- Datatable-->
     <script src="../PruebaTecnica/Recursos\DataTables\datatables.min.js"></script>
+    <script src="../PruebaTecnica/Recursos/bootstrap/js/bootstrap-select.min.js"></script>
 
     <script type="text/javascript" src="../PruebaTecnica/Control\Ajax\EmpleadosAjax.js"></script>
 </body>

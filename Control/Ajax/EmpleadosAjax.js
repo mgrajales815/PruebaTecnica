@@ -47,7 +47,8 @@ function mostrarform(flag)
 	limpiar();//limpia el formulario
 	if (flag)
 	{//partes de la pagina que se muestran o se ocultan
-        $.post("../Control/AreasControl.php?op=listar", function (r) {
+        $.post("../PruebaTecnica/Control/AreasControl.php?op=select", function (r) {
+            //console.log(r)
             $("#area").html(r);
             $('#area').selectpicker('refresh');
         });
